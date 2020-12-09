@@ -1,0 +1,114 @@
+.link-disabled {
+  color: gray;
+  font-weight: 100;
+}
+
+.link-enabled {
+  color: $secondary;
+  font-weight: 700;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 50px;
+  margin: 10px;
+  padding: 8px 20px 8px 20px;
+  background-size: 200% auto;
+  box-shadow: 0 0.6px 1.1px rgba(0, 0, 0, 0.075), 0 5px 9px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  .icon {
+    width: 25px;
+    margin-right: 8px;
+  }
+}
+
+.input {
+  height: 60%;
+  padding-left: 14px;
+  padding-right: 14px;
+  width: 150px;
+  border-radius: 60px;
+  border: white solid;
+  outline: none;
+  box-shadow: 0 0px 1.5px -4px rgba(0, 0, 0, 0.12),
+    0 0px 12px -4px rgba(0, 0, 0, 0.24);
+
+  &::placeholder {
+    color: rgb(180, 180, 180);
+  }
+}
+
+.input-dropdown {
+  cursor: pointer;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 18px;
+  background-color: white;
+  color: $disabled;
+}
+
+.dropdown {
+  position: absolute;
+  width: 96.8%;
+  height: 0;
+  top: 34px;
+  background-color: white;
+  box-shadow: 0 0px 1.5px -4px rgba(0, 0, 0, 0.12),
+    0 0px 12px -4px rgba(0, 0, 0, 0.24);
+  clip-path: inset(0 -5px -5px -5px);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  z-index: 10;
+  overflow: hidden;
+
+  transition: 0.2s ease-out;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.116);
+    border-radius: 100px;
+  }
+
+  .dropdown-item {
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0 5px 0;
+
+    &:hover {
+      color: white;
+      background-color: $secondary;
+    }
+  }
+}
+
+.btn-signup {
+  border: none;
+  color: white;
+  background-image: linear-gradient(
+    43deg,
+    $secondary 0%,
+    $primary 65%,
+    $secondary 100%
+  );
+}
+
+.btn-login {
+  box-shadow: 0 0 0 1.5px $secondary;
+  color: $secondary;
+  font-weight: 700;
+}

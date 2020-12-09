@@ -1,0 +1,232 @@
+.container-sign,
+.container-signup {
+    width: 60%;
+    height: 500px;
+    margin-top: 8%;
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 0px 1.9px rgba(0, 0, 0, 0.085), 0 0px 15px rgba(0, 0, 0, 0.17);
+
+    @extend .grid-default;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+.container-sign {
+    .sign-block-1 {
+        @media only screen and (max-width: $mobile) {
+            grid-column: span 2;
+        }
+
+        form {
+            @extend .grid-default;
+
+            input {
+                font-family: "Montserrat", sans-serif;
+                width: 100%;
+            }
+
+            #input-email {
+                margin-top: 30px;
+                height: 35px;
+                width: 85%;
+            }
+
+            #input-password {
+                margin-top: 20px;
+                height: 35px;
+                width: 85%;
+            }
+
+            a {
+                margin: 18px 0 8px 0;
+                color: gray;
+                font-size: 0.8rem;
+            }
+
+            .btn-form-login {
+                background-color: $primary;
+                box-shadow: 0 0px 0.9px rgba(0, 0, 0, 0.13),
+                    0 0px 7px rgba(0, 0, 0, 0.26);
+                border: none;
+                color: white;
+                font-weight: 100;
+            }
+        }
+
+        .form-divider {
+            margin-top: 25px;
+            width: 100%;
+
+            display: grid;
+            align-items: center;
+            gap: 8px;
+            grid-template-columns: 0.7fr 1fr 0.7fr;
+
+            .form-divider-line {
+                background-color: rgb(151, 151, 151);
+                height: 1px;
+            }
+
+            .form-divider-text {
+                color: rgb(151, 151, 151);
+                text-align: center;
+                font-size: 0.6rem;
+            }
+        }
+
+        .form-social-btns {
+            margin-top: 15px;
+
+            @extend .grid-default;
+            grid-template-columns: 0.5fr 0.5fr;
+
+            .btn-facebook,
+            .btn-google {
+                border: none;
+                font-size: 0.7rem;
+                color: white;
+                font-family: "Montserrat", sans-serif;
+            }
+
+            .btn-facebook {
+                background-color: #4b5ed9;
+
+                .icon-facebook {
+                    margin-right: 2px;
+                }
+            }
+
+            .btn-google {
+                background-color: #ef5151;
+
+                .icon-google {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .sign-block-2 {
+        @media only screen and (max-width: $mobile) {
+            display: none;
+        }
+
+        width: 100%;
+        border-top-right-radius: 45px;
+        border-bottom-right-radius: 45px;
+        border: none;
+        height: inherit;
+        background-color: #5d7589;
+        background-image: linear-gradient(0deg, #5d7589 50%, #f9a826 120%);
+        justify-items: center;
+        color: white;
+
+        display: grid;
+        gap: 0;
+
+        h1 {
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                0px 8px 13px rgba(0, 0, 0, 0.1),
+                0px 18px 23px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+            font-size: 3.5rem;
+        }
+
+        img {
+            width: 50%;
+        }
+
+        p {
+            font-size: 1.2rem;
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                0px 8px 13px rgba(0, 0, 0, 0.1),
+                0px 18px 23px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.container-signup {
+    .sign-block-1 {
+        @media only screen and (max-width: $mobile) {
+            display: none;
+        }
+
+        width: 100%;
+        border-top-left-radius: 45px;
+        border-bottom-left-radius: 45px;
+        border: none;
+        height: inherit;
+        background-color: #5d7589;
+        background-image: linear-gradient(0deg, #5d7589 50%, #f9a826 120%);
+        justify-items: center;
+        color: white;
+
+        display: grid;
+        gap: 0;
+
+        h1 {
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                0px 8px 13px rgba(0, 0, 0, 0.1),
+                0px 18px 23px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+            font-size: 3.5rem;
+        }
+
+        img {
+            width: 50%;
+        }
+
+        p {
+            font-size: 1.2rem;
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                0px 8px 13px rgba(0, 0, 0, 0.1),
+                0px 18px 23px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .sign-block-2 {
+        @media only screen and (max-width: $mobile) {
+            grid-column: span 2;
+        }
+
+        form {
+            @extend .grid-default;
+
+            input {
+                font-family: "Montserrat", sans-serif;
+                width: 100%;
+            }
+
+            #input-username {
+                margin-top: 70px;
+                height: 40px;
+                width: 100%;
+            }
+
+            #input-email,
+            #input-password {
+                margin-top: 20px;
+                height: 40px;
+                width: 100%;
+            }
+
+            a {
+                margin: 18px 0 8px 0;
+                color: gray;
+                font-size: 0.8rem;
+            }
+
+            .btn-form-signup {
+                background-color: $primary;
+                margin-top: 40px;
+                box-shadow: 0 0px 0.9px rgba(0, 0, 0, 0.13),
+                    0 0px 7px rgba(0, 0, 0, 0.26);
+                border: none;
+                color: white;
+                font-weight: 100;
+            }
+        }
+    }
+}
