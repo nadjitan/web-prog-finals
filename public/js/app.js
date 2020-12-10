@@ -126,10 +126,12 @@ function modals() {
   //#region Book modal effects
   var minLeft = parseInt($(".container-container").css("left").replace("%", "")); // Minimum left percentage
 
+  var maxSteps = $("#steps-counter").attr("max");
   var currentLeft = minLeft; // Left percentage that changes based on what is pressed
 
   var currentStep = 1; // Current step the user is in
 
+  checkStep(currentStep, maxSteps);
   $(".circle-".concat(currentStep)).css({
     "background-color": "#f9a826"
   });
@@ -143,6 +145,7 @@ function modals() {
     $(".circle-".concat(currentStep)).css({
       "background-color": "#f9a826"
     });
+    checkStep(currentStep, maxSteps);
     $(".container-container").animate({
       left: "".concat(minLeft, "%")
     }, 500);
@@ -217,6 +220,9 @@ function modals() {
         left: "".concat(currentLeft, "%")
       }, 500); // Step container animation
     }
+
+    checkStep(currentStep, maxSteps);
+    finishForm();
   });
   $(".btn-back").on("click", function () {
     if (currentLeft !== minLeft) {
@@ -232,7 +238,24 @@ function modals() {
         left: "".concat(currentLeft, "%")
       }, 500);
     }
+
+    checkStep(currentStep, maxSteps);
+    finishForm();
   }); //#endregion Book modal effects
+}
+
+function checkStep(currentStep, maxSteps) {
+  if (currentStep != 1) {
+    $(".btn-back").css("visibility", "visible");
+  } else {
+    $(".btn-back").css("visibility", "hidden");
+  }
+
+  if (currentStep < maxSteps) {
+    $(".btn-next").css("visibility", "visible");
+  } else {
+    $(".btn-next").css("visibility", "hidden");
+  }
 }
 
 function changeDropdownValue(event) {
@@ -242,6 +265,25 @@ function changeDropdownValue(event) {
     color: "black"
   });
   selectedDropdownItem.innerHTML = buttonClicked.innerHTML + "<div class='icon-expand'></div>";
+}
+
+function finishForm() {
+  var origin = $(".show-origin").html().replace('<div class="icon-expand"></div>', "").replace(/\s/g, "");
+  var destination = $(".show-destination").html().replace('<div class="icon-expand"></div>', "").replace(/\s/g, "");
+  var price = $(".show-price").html().replace("₱ ", "").replace(",", "");
+  var nationality = $("#nationality-element").html().replace('<div class="icon-expand"></div>', "").replace(/\s/g, "");
+  var gender = $("#gender-element").html().replace('<div class="icon-expand"></div>', "").replace(/\s/g, "");
+  var dobMonth = $("#db-month-element").html().replace('<div class="icon-expand"></div>', "").replace(/\s/g, "");
+  var pedMonth = $("#pi-month-element").html().replace('<div class="icon-expand"></div>', "").replace(/\s/g, "");
+  var dateOfBirth = $("#input-day-DB").val() + " " + dobMonth + " " + $("#input-year-DB").val();
+  var pportExpDate = $("#input-day-PI").val() + " " + pedMonth + " " + $("#input-year-PI").val();
+  $("input[name ='origin']").val(origin);
+  $("input[name ='destination']").val(destination);
+  $("input[name ='price']").val(price);
+  $("input[name ='nationality']").val(nationality);
+  $("input[name ='gender']").val(gender);
+  $("input[name ='date_of_birth']").val(dateOfBirth);
+  $("input[name ='passport_expiry_date']").val(pportExpDate);
 } // Source: https://www.w3resource.com/javascript-exercises/javascript-math-exercise-39.php
 
 

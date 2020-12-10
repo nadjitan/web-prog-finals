@@ -73,7 +73,7 @@ nav {
 
         .nav-links {
             display: grid;
-            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: repeat(auto-fill, 1fr);
             justify-items: center;
             touch-action: none;
 
@@ -93,7 +93,8 @@ nav {
                 margin: 0;
             }
 
-            .btn-login {
+            .btn-login,
+            .btn-logout {
                 box-shadow: 0 0 0 1.5px $light;
                 color: $light;
                 font-weight: 100;

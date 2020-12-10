@@ -27,14 +27,24 @@
         <a href="{{ route('home') }}" class="link-enabled">Home</a>
         <a href="#ABOUT" class="link-disabled">About</a>
         <a href="{{ route('store') }}" class="link-disabled">Places</a>
-        <a href="{{ route('signup') }}" class="btn btn-signup"
-          ><div class="icon icon-person-add"></div>
-          Sign Up</a
-        >
-        <a href="{{ route('login') }}" class="btn btn-login"
-          ><div class="icon icon-person"></div>
-          Log In</a
-        >
+
+        @guest
+          <a href="{{ route('signup') }}" class="btn btn-signup">
+            <div class="icon icon-person-add"></div>
+            Sign Up
+          </a>
+          <a href="{{ route('login') }}" class="btn btn-login">
+            <div class="icon icon-person"></div>
+            Log In
+          </a>
+        @endguest
+
+        @auth
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-logout"><div class="icon icon-person"></div> Logout</button>
+          </form>
+        @endauth
       </div>
 
       <label for="nav-toggle" class="icon-menu">

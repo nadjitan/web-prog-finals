@@ -42,8 +42,11 @@ function modals() {
             .replace("%", "")
     ); // Minimum left percentage
 
+    const maxSteps = $("#steps-counter").attr("max");
     let currentLeft = minLeft; // Left percentage that changes based on what is pressed
     let currentStep = 1; // Current step the user is in
+
+    checkStep(currentStep, maxSteps);
 
     $(`.circle-${currentStep}`).css({ "background-color": "#f9a826" });
 
@@ -53,6 +56,7 @@ function modals() {
         $(`.circle-${currentStep}`).css({ "background-color": "#5d7589" });
         currentStep = 1;
         $(`.circle-${currentStep}`).css({ "background-color": "#f9a826" });
+        checkStep(currentStep, maxSteps);
         $(".container-container").animate({ left: `${minLeft}%` }, 500);
         $(".input-dropdown")
             .html("Select <div class='icon-expand'></div>")
@@ -114,6 +118,9 @@ function modals() {
             currentLeft -= minLeft;
             $(".container-container").animate({ left: `${currentLeft}%` }, 500); // Step container animation
         }
+
+        checkStep(currentStep, maxSteps);
+        finishForm();
     });
 
     $(".btn-back").on("click", function() {
@@ -124,9 +131,26 @@ function modals() {
             currentLeft += minLeft;
             $(".container-container").animate({ left: `${currentLeft}%` }, 500);
         }
+
+        checkStep(currentStep, maxSteps);
+        finishForm();
     });
 
     //#endregion Book modal effects
+}
+
+function checkStep(currentStep, maxSteps) {
+    if (currentStep != 1) {
+        $(".btn-back").css("visibility", "visible");
+    } else {
+        $(".btn-back").css("visibility", "hidden");
+    }
+
+    if (currentStep < maxSteps) {
+        $(".btn-next").css("visibility", "visible");
+    } else {
+        $(".btn-next").css("visibility", "hidden");
+    }
 }
 
 function changeDropdownValue(event) {
@@ -138,6 +162,58 @@ function changeDropdownValue(event) {
 
     selectedDropdownItem.innerHTML =
         buttonClicked.innerHTML + "<div class='icon-expand'></div>";
+}
+
+function finishForm() {
+    let origin = $(".show-origin")
+        .html()
+        .replace('<div class="icon-expand"></div>', "")
+        .replace(/\s/g, "");
+    let destination = $(".show-destination")
+        .html()
+        .replace('<div class="icon-expand"></div>', "")
+        .replace(/\s/g, "");
+    let price = $(".show-price")
+        .html()
+        .replace("₱ ", "")
+        .replace(",", "");
+    let nationality = $("#nationality-element")
+        .html()
+        .replace('<div class="icon-expand"></div>', "")
+        .replace(/\s/g, "");
+    let gender = $("#gender-element")
+        .html()
+        .replace('<div class="icon-expand"></div>', "")
+        .replace(/\s/g, "");
+
+    let dobMonth = $("#db-month-element")
+        .html()
+        .replace('<div class="icon-expand"></div>', "")
+        .replace(/\s/g, "");
+    let pedMonth = $("#pi-month-element")
+        .html()
+        .replace('<div class="icon-expand"></div>', "")
+        .replace(/\s/g, "");
+    let dateOfBirth =
+        $("#input-day-DB").val() +
+        " " +
+        dobMonth +
+        " " +
+        $("#input-year-DB").val();
+    let pportExpDate =
+        $("#input-day-PI").val() +
+        " " +
+        pedMonth +
+        " " +
+        $("#input-year-PI").val();
+
+    $("input[name ='origin']").val(origin);
+    $("input[name ='destination']").val(destination);
+    $("input[name ='price']").val(price);
+    $("input[name ='nationality']").val(nationality);
+    $("input[name ='gender']").val(gender);
+    $("input[name ='date_of_birth']").val(dateOfBirth);
+    $("input[name ='passport_expiry_date']").val(pportExpDate);
 }
 
 // Source: https://www.w3resource.com/javascript-exercises/javascript-math-exercise-39.php

@@ -24,29 +24,32 @@
         </div>
     
         <div class="sign-block-2">
-            <form action="">
+            <form action="{{ route('signup') }}" method="POST">
+                @csrf
                 <a href="{{ route('home') }}"><img src="{{ asset('img/Vertical.svg') }}" alt="" /></a> 
-                <input
-                type="text"
-                placeholder="Username"
-                name="input-username"
-                id="input-username"
-                class="input"
-                />
-                <input
-                type="email"
-                placeholder="Email"
-                name="input-email"
-                id="input-email"
-                class="input"
-                />
-                <input
-                type="password"
-                placeholder="Password"
-                name="input-password"
-                id="input-password"
-                class="input"
-                />
+
+                <input type="text" placeholder="Username" name="username" id="username" class="input @error('username') border-red @enderror" value="{{ old('username') }}"/>
+                @error('username')
+                  <div class="text-alert" style="padding-top: 5px">
+                      {{ $message }}
+                  </div>
+                @enderror
+
+                <input type="email" placeholder="Email" name="email" id="email" class="input @error('email') border-red @enderror" value="{{ old('email') }}"/>
+                @error('email')
+                  <div class="text-alert" style="padding-top: 5px">
+                      {{ $message }}
+                  </div>
+                @enderror
+
+                <input type="password" placeholder="Password" name="password" id="password" class="input @error('password') border-red @enderror" />
+                @error('password')
+                  <div class="text-alert" style="padding-top: 5px">
+                      {{ $message }}
+                  </div>
+                @enderror
+
+                <input type="password" placeholder="Password confirmation" name="password_confirmation" id="password_confirmation" class="input" />
     
                 <button class="btn btn-form-signup">SIGN UP</button>
             </form>

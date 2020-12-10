@@ -27,13 +27,13 @@
                 width: 100%;
             }
 
-            #input-email {
+            #email {
                 margin-top: 30px;
                 height: 35px;
                 width: 85%;
             }
 
-            #input-password {
+            #password {
                 margin-top: 20px;
                 height: 35px;
                 width: 85%;
@@ -199,17 +199,18 @@
                 width: 100%;
             }
 
-            #input-username {
-                margin-top: 70px;
-                height: 40px;
-                width: 100%;
-            }
-
-            #input-email,
-            #input-password {
+            #username {
                 margin-top: 20px;
                 height: 40px;
-                width: 100%;
+                width: 240px;
+            }
+
+            #email,
+            #password,
+            #password_confirmation {
+                margin-top: 20px;
+                height: 40px;
+                width: 240px;
             }
 
             a {
@@ -220,7 +221,7 @@
 
             .btn-form-signup {
                 background-color: $primary;
-                margin-top: 40px;
+                margin-top: 20px;
                 box-shadow: 0 0px 0.9px rgba(0, 0, 0, 0.13),
                     0 0px 7px rgba(0, 0, 0, 0.26);
                 border: none;

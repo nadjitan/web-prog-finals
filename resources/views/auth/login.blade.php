@@ -18,24 +18,22 @@
   <body class="main-body" style="background-color: white; background-image: none;">
     <div class="container-sign">
         <div class="sign-block-1">
-            <form action="">
-                <a href="{{ route('home') }}"><img src="{{ asset('img/Vertical.svg') }}" alt="" /></a> 
-                <input
-                    type="email"
-                    placeholder="Email"
-                    name="input-email"
-                    id="input-email"
-                    class="input"
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    name="input-password"
-                    id="input-password"
-                    class="input"
-                />
-                <a href="#FORGOT-PASSWORD">Forgot your password?</a>
-                <button class="btn btn-form-login">LOG IN</button>
+            <form action="{{ route('login') }}" method="POST">
+              @csrf
+              <a href="{{ route('home') }}"><img src="{{ asset('img/Vertical.svg') }}" alt="Agila logo" /></a> 
+
+              <input type="email" placeholder="Email" name="email" id="email" class="input @if(session('status')) border-red @endif" value="{{ old('email') }}" />
+
+              <input type="password" placeholder="Password" name="password" id="password" class="input @if(session('status')) border-red @endif" />
+
+              @if (session('status'))
+                <div class="text-alert" style="padding-top: 15px">
+                    {{ session('status') }}
+                </div>
+              @endif
+
+              <a href="#FORGOT-PASSWORD">Forgot your password?</a>
+              <button class="btn btn-form-login">LOG IN</button>
             </form>
     
             <div class="form-divider">

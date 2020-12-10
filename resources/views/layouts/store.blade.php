@@ -36,7 +36,9 @@
                 </div>
             @endforeach
         @else
-            There are no places to book
+            <div style="color: white; font-size: 2rem;">
+                There are no places to book
+            </div>   
         @endif
         
     </div>
@@ -57,22 +59,34 @@
                     <div class="circle-3">3</div>
                 </div>
 
-                <form>
+                <form action="{{ route('store') }}" method="POST">
+                    <!-- STEP 1 -->
                     <div class="container-container">
-                        <!-- TEST -->
+                        @csrf
                         <div class="container-input">
-                            <div>
-                                <p class="show-origin"></p>
-                                <p class="show-destination"></p>
-                                <p class="show-price"></p>
-                            </div>
+                            <div class="validation">
+                                <div>
+                                    <h4>ORIGIN</h4>
+                                    <p class="show-origin"></p>
+                                    <input type="hidden" value="" name="origin">
+                                </div>
 
-                            <div class="input-2">
-                                <div></div>
+                                <div>
+                                    <h4>DESTINATION</h4>
+                                    <p class="show-destination"></p>
+                                    <input type="hidden" value="" name="destination">
+                                </div>
+
+                                <div>
+                                    <h4>PRICE</h4>
+                                    <p class="show-price"></p>
+                                    <input type="hidden" value="" name="price">
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- STEP 2 -->
                     <div class="container-container">
                         <div class="container-input">
                             <div>
@@ -81,33 +95,35 @@
                                 type="text"
                                 class="input"
                                 id="input-full-name"
-                                name="input-full-name"
+                                name="full_name"
                                 placeholder="e.g. Nadji Roi R. Tan"
                                 />
                             </div>
 
                             <div class="input-2">
                                 <div>
+                                    <input type="hidden" value="" name="nationality">
                                     <input type="checkbox" id="nationality-toggle" />
                                     <label class="label-nationality">Nationality</label>
                                     <label for="nationality-toggle">
-                                        <div class="input input-dropdown">
-                                        Select
-                                        <div class="icon-expand"></div>
-                                        </div>
-                                        <div class="dropdown">
-                                        <div class="dropdown-item">Filipino</div>
-                                        <div class="dropdown-item">American</div>
-                                        <div class="dropdown-item">Japanese</div>
+                                        <div class="input input-dropdown" id="nationality-element">
+                                            Select
+                                            <div class="icon-expand"></div>
+                                            </div>
+                                            <div class="dropdown">
+                                            <div class="dropdown-item">Filipino</div>
+                                            <div class="dropdown-item">American</div>
+                                            <div class="dropdown-item">Japanese</div>
                                         </div>
                                     </label>
                                 </div>
 
                                 <div>
+                                    <input type="hidden" value="" name="gender">
                                     <input type="checkbox" id="gender-toggle" />
                                     <label class="label-gender">Gender</label>
                                     <label for="gender-toggle">
-                                        <div class="input input-dropdown">
+                                        <div class="input input-dropdown" id="gender-element">
                                             Select
                                             <div class="icon-expand"></div>
                                         </div>
@@ -120,13 +136,13 @@
                             </div>
 
                             <div>
-                                <label for="input-full-name">Passport or ID number</label>
+                                <label for="input-full-name">Passport number</label>
                                 <input
                                 type="text"
                                 class="input"
-                                id="input-pass-id-number"
-                                name="input-pass-id-number"
-                                placeholder="Passport or ID number..."
+                                id="input-pass-number"
+                                name="passport_number"
+                                placeholder="Passport number..."
                                 />
                             </div>
                         </div>
@@ -138,12 +154,13 @@
                                 type="text"
                                 class="input"
                                 id="input-full-surname"
-                                name="input-full-surname"
+                                name="surname"
                                 placeholder="e.g. Tan"
                                 />
                             </div>
 
                             <div>
+                                <input type="hidden" value="" name="date_of_birth">
                                 <label for="container-date-DB">Date Of Birth</label>
                                 <div class="container-date-DB">
                                     <input
@@ -160,7 +177,7 @@
                                     <div>
                                         <input type="checkbox" id="DB-month-toggle" />
                                         <label for="DB-month-toggle">
-                                            <div class="input input-dropdown input-month-DB">
+                                            <div class="input input-dropdown input-month-DB" id="db-month-element">
                                                 Month
                                                 <div class="icon-expand"></div>
                                             </div>
@@ -195,7 +212,8 @@
                             </div>
 
                             <div>
-                                <label for="container-date-PI">Passport or ID expiry date</label>
+                                <input type="hidden" value="" name="passport_expiry_date">
+                                <label for="container-date-PI">Passport expiry date</label>
                                 <div class="container-date-PI">
                                     <input
                                         type="number"
@@ -211,7 +229,7 @@
                                     <div>
                                         <input type="checkbox" id="PI-month-toggle" />
                                         <label for="PI-month-toggle">
-                                            <div class="input input-dropdown input-month-PI">
+                                            <div class="input input-dropdown input-month-PI" id="pi-month-element">
                                                 Month
                                                 <div class="icon-expand"></div>
                                             </div>
@@ -247,51 +265,107 @@
                         </div>
                     </div>
 
+                    <!-- STEP 3 -->
                     <div class="container-container">
-                        <!-- TEST -->
-                        <div class="container-input">
+                        <div class="container-input cards">
+                            <div style="padding-left: 12px">
+                                Payment Method
+                            </div>
+                            
                             <div>
-                                <label for="input-full-name">Full Name</label>
+                                <a><img src="{{ asset('img/paypal.svg') }}" alt="Paypal Brand"></a>
+                                <a><img src="{{ asset('img/mastercard.svg') }}" alt="Mastercard Brand"></a>
+                                <a><img src="{{ asset('img/visa.svg') }}" alt="Visa Brand"></a>
+                            </div>
+
+                            <div>
+                                <label for="input-full-name">Card Holder's Name</label>
                                 <input
                                 type="text"
                                 class="input"
-                                id="input-full-name"
-                                name="input-full-name"
-                                placeholder="e.g. Nadji Roi R. Tan"
+                                id="input-card-holder"
+                                name="input-card-holder"
+                                placeholder="e.g. Nadji Tan"
                                 />
                             </div>
 
-                            <div class="input-2">
+                            <div>
+                                <label for="input-full-name">Card Number</label>
+                                <input
+                                type="number"
+                                class="input"
+                                id="input-card-number"
+                                name="input-card-number"
+                                placeholder="0000-0000-0000-0000"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="container-input">
+                            
+
+                            <div class="input-2 card-info">
                                 <div>
-                                    <input type="checkbox" id="nationality-toggle" />
-                                    <label class="label-nationality">Nationality</label>
-                                    <label for="nationality-toggle">
+                                    <input type="checkbox" id="expmonth-toggle" />
+                                    <label class="label-expmonth" style="margin-left: 12px">EXP Month</label>
+                                    <label for="expmonth-toggle">
                                         <div class="input input-dropdown">
                                             Select
                                             <div class="icon-expand"></div>
                                         </div>
                                         <div class="dropdown">
-                                            <div class="dropdown-item">Filipino</div>
-                                            <div class="dropdown-item">American</div>
-                                            <div class="dropdown-item">Japanese</div>
+                                            <div class="dropdown-item">1</div>
+                                            <div class="dropdown-item">2</div>
+                                            <div class="dropdown-item">3</div>
+                                            <div class="dropdown-item">4</div>
+                                            <div class="dropdown-item">5</div>
+                                            <div class="dropdown-item">6</div>
+                                            <div class="dropdown-item">7</div>
+                                            <div class="dropdown-item">8</div>
+                                            <div class="dropdown-item">9</div>
+                                            <div class="dropdown-item">10</div>
+                                            <div class="dropdown-item">11</div>
+                                            <div class="dropdown-item">12</div>
                                         </div>
                                     </label>
                                 </div>
 
                                 <div>
-                                    <input type="checkbox" id="gender-toggle" />
-                                    <label class="label-gender">Gender</label>
-                                    <label for="gender-toggle">
+                                    <input type="checkbox" id="expyear-toggle" />
+                                    <label class="label-expyear">EXP Year</label>
+                                    <label for="expyear-toggle">
                                         <div class="input input-dropdown">
                                             Select
                                             <div class="icon-expand"></div>
                                         </div>
                                         <div class="dropdown">
-                                            <div class="dropdown-item">Male</div>
-                                            <div class="dropdown-item">Female</div>
+                                            <div class="dropdown-item">22</div>
+                                            <div class="dropdown-item">23</div>
+                                            <div class="dropdown-item">24</div>
+                                            <div class="dropdown-item">25</div>
+                                            <div class="dropdown-item">26</div>
+                                            <div class="dropdown-item">27</div>
+                                            <div class="dropdown-item">28</div>
+                                            <div class="dropdown-item">29</div>
+                                            <div class="dropdown-item">30</div>
                                         </div>
                                     </label>
                                 </div>
+                            </div>
+
+                            <div>
+                                <label for="input-cvc-number">CVC Number</label>
+                                <input
+                                type="number"
+                                class="input"
+                                id="input-cvc-number"
+                                name="input-cvc-number"
+                                placeholder="000"
+                                />
+                            </div>
+
+                            <div style="width: 100%; display: grid; justify-items: center;">
+                                <button type="submit" class="btn btn-book-now">BOOK FLIGHT</button>
                             </div>
                         </div>
                     </div>
