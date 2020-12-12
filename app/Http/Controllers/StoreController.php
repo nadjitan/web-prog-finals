@@ -24,6 +24,7 @@ class StoreController extends Controller
         ]);
     }
 
+    // Used for transfering data to book modal
     public function book($id) 
     {
         $place = Place::where('id', $id)->first();

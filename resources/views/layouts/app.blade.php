@@ -26,7 +26,6 @@
       <div class="nav-links">
         <a href="{{ route('home') }}" class="link-enabled">Home</a>
         <a href="#ABOUT" class="link-disabled">About</a>
-        <a href="{{ route('store') }}" class="link-disabled">Places</a>
 
         @guest
           <a href="{{ route('signup') }}" class="btn btn-signup">
@@ -40,6 +39,7 @@
         @endguest
 
         @auth
+          <a href="{{ route('store') }}" class="link-disabled">Places</a>
           <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit" class="btn btn-logout"><div class="icon icon-person"></div> Logout</button>
