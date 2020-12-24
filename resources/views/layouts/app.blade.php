@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Agila @yield('pageTitle')</title>
+  <link rel="icon" href="{{ asset('img/Symbol.svg') }}"/>
 
   <link rel="stylesheet" href="/css/app.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -40,6 +41,7 @@
 
         @auth
           <a href="{{ route('store') }}" class="link-disabled">Places</a>
+          <a href="{{ route('profile') }}" class="link-disabled">Profile</a>
           <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit" class="btn btn-logout"><div class="icon icon-person"></div> Logout</button>

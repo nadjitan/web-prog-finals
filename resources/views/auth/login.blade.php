@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Agila - Login</title>
 
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -20,23 +20,36 @@
         <div class="sign-block-1">
             <form action="{{ route('login') }}" method="POST">
               @csrf
-              <a href="{{ route('home') }}"><img src="{{ asset('img/Vertical.svg') }}" alt="Agila logo" /></a> 
+              <a href="{{ route('home') }}" id="logo"><img src="{{ asset('img/Vertical.svg') }}" alt="Agila logo" /></a> 
 
-              <input type="email" placeholder="Email" name="email" id="email" class="input @if(session('status')) border-red @endif" value="{{ old('email') }}" />
+              <section>
+                <p>
+                  <label for="email">Email</label>
+                  <input type="email" name="email" id="email" class="input @if(session('status')) border-red @endif" value="{{ old('email') }}" />  
+                </p>
 
-              <input type="password" placeholder="Password" name="password" id="password" class="input @if(session('status')) border-red @endif" />
+                <p>
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" class="input @if(session('status')) border-red @endif" />    
+                </p>
 
-              @if (session('status'))
-                <div class="text-alert" style="padding-top: 15px">
-                    {{ session('status') }}
-                </div>
-              @endif
+                @if (session('status'))
+                  <div class="text-alert" style="padding-top: 15px">
+                      {{ session('status') }}
+                  </div>
+                @endif
+                
+                <p id="forgot-pass">
+                  <a href="{{ route('reset') }}">Forgot your password?</a>
+                </p>
+              </section>
 
-              <a href="#FORGOT-PASSWORD">Forgot your password?</a>
-              <button class="btn btn-form-login">LOG IN</button>
+              <section>
+                <button type="submit" class="btn btn-form-login">LOG IN</button>
+              </section>
             </form>
     
-            <div class="form-divider">
+            {{-- <div class="form-divider">
             <div class="form-divider-line"></div>
             <div class="form-divider-text">OR CONNECT WITH</div>
             <div class="form-divider-line"></div>
@@ -51,7 +64,7 @@
                     <div class="icon icon-google"></div>
                     GOOGLE
                 </button>
-            </div>
+            </div> --}}
         </div>
     
         <div class="sign-block-2">

@@ -11,12 +11,25 @@
     @extend .grid-default;
     align-items: center;
     grid-template-columns: 1fr 1fr;
+
+    @media only screen and (max-width: $mobile) {
+        width: 90%;
+    }
 }
 
 .container-sign {
     .sign-block-1 {
+        height: 100%;
+
+        display: grid;
+        align-content: center;
+
         @media only screen and (max-width: $mobile) {
             grid-column: span 2;
+        }
+
+        #logo {
+            margin-bottom: 40px;
         }
 
         form {
@@ -24,25 +37,37 @@
 
             input {
                 font-family: "Montserrat", sans-serif;
+            }
+
+            p {
                 width: 100%;
             }
 
+            label {
+                padding-left: 20px;
+                color: gray;
+                font-size: 0.8rem;
+            }
+
             #email {
-                margin-top: 30px;
+                margin-top: 10px;
                 height: 35px;
                 width: 85%;
             }
 
             #password {
-                margin-top: 20px;
+                margin-top: 10px;
                 height: 35px;
                 width: 85%;
             }
 
-            a {
-                margin: 18px 0 8px 0;
-                color: gray;
+            #forgot-pass {
                 font-size: 0.8rem;
+                text-align: center;
+
+                & > a {
+                    color: gray;
+                }
             }
 
             .btn-form-login {
@@ -55,57 +80,57 @@
             }
         }
 
-        .form-divider {
-            margin-top: 25px;
-            width: 100%;
+        // .form-divider {
+        //     margin-top: 25px;
+        //     width: 100%;
 
-            display: grid;
-            align-items: center;
-            gap: 8px;
-            grid-template-columns: 0.7fr 1fr 0.7fr;
+        //     display: grid;
+        //     align-items: center;
+        //     gap: 8px;
+        //     grid-template-columns: 0.7fr 1fr 0.7fr;
 
-            .form-divider-line {
-                background-color: rgb(151, 151, 151);
-                height: 1px;
-            }
+        //     .form-divider-line {
+        //         background-color: rgb(151, 151, 151);
+        //         height: 1px;
+        //     }
 
-            .form-divider-text {
-                color: rgb(151, 151, 151);
-                text-align: center;
-                font-size: 0.6rem;
-            }
-        }
+        //     .form-divider-text {
+        //         color: rgb(151, 151, 151);
+        //         text-align: center;
+        //         font-size: 0.6rem;
+        //     }
+        // }
 
-        .form-social-btns {
-            margin-top: 15px;
+        // .form-social-btns {
+        //     margin-top: 15px;
 
-            @extend .grid-default;
-            grid-template-columns: 0.5fr 0.5fr;
+        //     @extend .grid-default;
+        //     grid-template-columns: 0.5fr 0.5fr;
 
-            .btn-facebook,
-            .btn-google {
-                border: none;
-                font-size: 0.7rem;
-                color: white;
-                font-family: "Montserrat", sans-serif;
-            }
+        //     .btn-facebook,
+        //     .btn-google {
+        //         border: none;
+        //         font-size: 0.7rem;
+        //         color: white;
+        //         font-family: "Montserrat", sans-serif;
+        //     }
 
-            .btn-facebook {
-                background-color: #4b5ed9;
+        //     .btn-facebook {
+        //         background-color: #4b5ed9;
 
-                .icon-facebook {
-                    margin-right: 2px;
-                }
-            }
+        //         .icon-facebook {
+        //             margin-right: 2px;
+        //         }
+        //     }
 
-            .btn-google {
-                background-color: #ef5151;
+        //     .btn-google {
+        //         background-color: #ef5151;
 
-                .icon-google {
-                    margin-right: 5px;
-                }
-            }
-        }
+        //         .icon-google {
+        //             margin-right: 5px;
+        //         }
+        //     }
+        // }
     }
 
     .sign-block-2 {
@@ -147,26 +172,33 @@
     }
 }
 
+#logo {
+    margin-top: 20px;
+}
+
 .container-signup {
+    height: fit-content;
+    margin-top: 2%;
+
     .sign-block-1 {
         @media only screen and (max-width: $mobile) {
             display: none;
         }
 
         width: 100%;
+        height: 100%;
         border-top-left-radius: 45px;
         border-bottom-left-radius: 45px;
         border: none;
-        height: inherit;
         background-color: #5d7589;
         background-image: linear-gradient(0deg, #5d7589 50%, #f9a826 120%);
-        justify-items: center;
         color: white;
 
         display: grid;
-        gap: 0;
-
+        justify-items: center;
+        align-content: center;
         h1 {
+            padding-bottom: 50px;
             text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
                 0px 8px 13px rgba(0, 0, 0, 0.1),
                 0px 18px 23px rgba(0, 0, 0, 0.1);
@@ -187,36 +219,52 @@
     }
 
     .sign-block-2 {
+        height: 100%;
+        padding: 20px 0px 20px 0px;
+
+        @extend .grid-default;
+        align-content: center;
+
+        #logo {
+            margin-bottom: 30px;
+        }
+
         @media only screen and (max-width: $mobile) {
             grid-column: span 2;
+            width: 100%;
         }
 
         form {
             @extend .grid-default;
 
-            input {
-                font-family: "Montserrat", sans-serif;
+            label {
+                margin-top: 30px;
+                padding-left: 17px;
+                color: gray;
+                font-size: 0.8rem;
+            }
+
+            p {
                 width: 100%;
             }
 
+            input {
+                font-family: "Montserrat", sans-serif;
+                font-size: 0.8rem;
+            }
+
             #username {
-                margin-top: 20px;
-                height: 40px;
-                width: 240px;
+                margin-top: 10px;
+                height: 30px;
+                width: 85%;
             }
 
             #email,
             #password,
             #password_confirmation {
-                margin-top: 20px;
-                height: 40px;
-                width: 240px;
-            }
-
-            a {
-                margin: 18px 0 8px 0;
-                color: gray;
-                font-size: 0.8rem;
+                margin-top: 10px;
+                height: 30px;
+                width: 85%;
             }
 
             .btn-form-signup {
@@ -227,6 +275,55 @@
                 border: none;
                 color: white;
                 font-weight: 100;
+            }
+        }
+    }
+}
+
+.container-reset {
+    margin-top: 12%;
+    width: 30%;
+    height: fit-content;
+    box-shadow: 0 0px 1.9px rgba(0, 0, 0, 0.085), 0 0px 15px rgba(0, 0, 0, 0.17);
+    padding: 20px;
+    border-radius: 30px;
+
+    display: grid;
+    place-items: center;
+
+    @media only screen and (max-width: $mobile) {
+        width: 80%;
+        margin-top: 25%;
+    }
+
+    form {
+        display: grid;
+        place-items: center;
+
+        width: 100%;
+
+        section {
+            p {
+                display: grid;
+            }
+
+            label {
+                margin-top: 15px;
+                margin-bottom: 8px;
+                padding-left: 10px;
+                font-size: 0.8rem;
+                color: gray;
+            }
+
+            input {
+                height: 26px;
+                width: max-content;
+                font-size: 1rem;
+            }
+
+            .btn-reset {
+                background-color: rgb(247, 19, 19);
+                color: white;
             }
         }
     }

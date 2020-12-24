@@ -1,0 +1,177 @@
+.store-search {
+    width: 40%;
+    height: 50px;
+    margin-top: 150px;
+    padding: 0 30px 0 30px;
+    background-color: white;
+    box-shadow: 0 0px 2.8px rgba(0, 0, 0, 0.11), 0 0px 22px rgba(0, 0, 0, 0.22);
+    border-radius: 40px;
+
+    display: grid;
+    align-items: center;
+    gap: 0;
+    grid-template-columns: 1fr 50px;
+
+    input {
+        padding-left: 30px;
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 40px;
+        border: none;
+        outline: none;
+    }
+}
+
+#nav-toggle,
+#nationality-toggle,
+#gender-toggle,
+#DB-month-toggle,
+#PI-month-toggle,
+#expmonth-toggle,
+#expyear-toggle {
+    position: absolute;
+    visibility: hidden;
+}
+
+.container-store {
+    width: 75%;
+    height: 580px;
+    margin-top: 40px;
+    overflow-y: scroll;
+
+    @extend .grid-default;
+    grid-template-rows: repeat(auto-fill, 1fr);
+    gap: 10px;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.26);
+        border-radius: 100px;
+    }
+
+    @media only screen and (max-width: $mobile) {
+        width: 90%;
+    }
+
+    .container-store-item {
+        width: 95%;
+        height: 100%;
+        background-color: white;
+        border-radius: 40px;
+        grid-template-columns: 1fr 0.3fr;
+
+        @extend .grid-default;
+        align-items: center;
+
+        @media only screen and (max-width: $mobile) {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .store-item-column {
+            width: 100%;
+            @extend .grid-default;
+            align-items: center;
+            grid-template-columns: 0.5fr 0.1fr 0.5fr 0.5fr;
+
+            img {
+                width: 100px;
+                height: 20px;
+            }
+
+            div {
+                text-align: center;
+            }
+        }
+
+        .store-item-book {
+            width: 100%;
+            height: 100%;
+            border-left: 1px dashed $disabled;
+            @extend .grid-default;
+            align-items: center;
+
+            .btn-book {
+                color: white;
+                background-color: $secondary;
+                border: none;
+            }
+
+            @media only screen and (max-width: $mobile) {
+                border-left: none;
+                border-top: 1px dashed $disabled;
+            }
+        }
+    }
+}
+
+#nationality-toggle:checked,
+#gender-toggle:checked,
+#DB-month-toggle:checked,
+#PI-month-toggle:checked,
+#expmonth-toggle:checked,
+#expyear-toggle:checked {
+    ~ label[for="nationality-toggle"],
+    ~ label[for="gender-toggle"],
+    ~ label[for="DB-month-toggle"],
+    ~ label[for="PI-month-toggle"],
+    ~ label[for="expmonth-toggle"],
+    ~ label[for="expyear-toggle"] {
+        .dropdown {
+            height: 70px;
+            padding-top: 10px;
+            padding-bottom: 15px;
+        }
+    }
+
+    ~ label[for="DB-month-toggle"],
+    ~ label[for="PI-month-toggle"] {
+        .dropdown {
+            height: 100px;
+        }
+    }
+}
+
+label[for="nationality-toggle"],
+label[for="gender-toggle"],
+label[for="DB-month-toggle"],
+label[for="PI-month-toggle"],
+label[for="expmonth-toggle"],
+label[for="expyear-toggle"] {
+    position: relative;
+    display: grid;
+    right: 8px;
+}
+
+label[for="nationality-toggle"] {
+    .dropdown {
+        width: 93%;
+    }
+}
+
+label[for="gender-toggle"] {
+    right: 4px;
+
+    .dropdown {
+        width: 110%;
+    }
+}
+
+label[for="DB-month-toggle"],
+label[for="PI-month-toggle"] {
+    right: 6px;
+
+    .dropdown {
+        width: 123%;
+    }
+}
+
+label[for="expmonth-toggle"],
+label[for="expyear-toggle"] {
+    .dropdown {
+        width: 103%;
+    }
+}

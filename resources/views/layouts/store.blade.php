@@ -1,17 +1,25 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container-store">
-        <div class="store-search">
-            <div class="icon icon-search"></div>
-            <input
-                type="text"
-                id="input-search"
-                name="input-search"
-                placeholder="Search"
-            />
-        </div>
+@section('pageTitle', '- Store')
 
+@section('content')
+    <div class="store-search">
+        <input
+            type="text"
+            id="input-search"
+            name="input-search"
+            placeholder="Search"
+        />
+        <div class="icon icon-search"></div>
+    </div>
+
+    @if ($errors->any())
+        <div class="text-alert" style="display: grid; align-content: center; justify-content: center; margin-top: 30px; height: fit-content; width: fit-content; background-color: white; border-radius: 20px; padding: 20px; font-weight: bold;">
+        Booking error. Please fill every field.
+        </div>
+    @endif
+
+    <div class="container-store">
         @if ($places->count())
             @foreach ($places as $place)
                 <div class="container-store-item">
@@ -28,7 +36,7 @@
                             <p>{{ $place->destination_short }}</p>
                         </div>
         
-                        <div>₱ {{ $place->price }}</div>
+                        <div>₱ {{ number_format($place->price, 2, '.', ',') }}</div>
                     </div>
                     <div class="store-item-book">                 
                         <button class="btn btn-book open-modal-book" data-id="{{ $place->id }}">BOOK</button>
@@ -97,6 +105,7 @@
                                 id="input-full-name"
                                 name="full_name"
                                 placeholder="e.g. Nadji Roi R. Tan"
+                                value="{{ old('full_name') }}"
                                 />
                             </div>
 
@@ -106,7 +115,7 @@
                                     <input type="checkbox" id="nationality-toggle" />
                                     <label class="label-nationality">Nationality</label>
                                     <label for="nationality-toggle">
-                                        <div class="input input-dropdown" id="nationality-element">
+                                        <div class="input input-dropdown" id="nationality-element" >
                                             Select
                                             <div class="icon-expand"></div>
                                             </div>
@@ -143,6 +152,7 @@
                                 id="input-pass-number"
                                 name="passport_number"
                                 placeholder="Passport number..."
+                                value="{{ old('passport_number') }}"
                                 />
                             </div>
                         </div>
@@ -156,6 +166,7 @@
                                 id="input-full-surname"
                                 name="surname"
                                 placeholder="e.g. Tan"
+                                value="{{ old('surname') }}"
                                 />
                             </div>
 

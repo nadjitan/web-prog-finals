@@ -1,11 +1,13 @@
-@function _buildIcon($icon, $v1, $v2, $v3, $v4) {
-    $icon: '<svg width="54px" height="54px" viewBox="#{$v1} #{$v2} #{$v3} #{$v4}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">#{$icon}</svg>';
+@function _buildIcon($icon, $width, $height, $v1, $v2, $v3, $v4) {
+    $icon: '<svg width="#{$width}" height="#{$height}" viewBox="#{$v1} #{$v2} #{$v3} #{$v4}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">#{$icon}</svg>';
     @return $icon;
 }
 
 @function icon(
     $icon-name,
     $color,
+    $width: 54px,
+    $height: 54px,
     $vb1: 0,
     $vb2: 0,
     $vb3: 54,
@@ -28,10 +30,20 @@
         exit:
             '<path fill="#{$color}" stroke="#{$stroke-color}" stroke-width="#{$stroke-width}" style="#{$css}" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>',
         expand:
-            '<path fill="#{$color}" stroke="#{$stroke-color}" stroke-width="#{$stroke-width}" style="#{$css}" d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>'
+            '<path fill="#{$color}" stroke="#{$stroke-color}" stroke-width="#{$stroke-width}" style="#{$css}" d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>',
+        edit:
+            '<path fill="#{$color}" stroke="#{$stroke-color}" stroke-width="#{$stroke-width}" style="#{$css}" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>'
     );
 
-    $icon: _buildIcon(map-get($icons, $icon-name), $vb1, $vb2, $vb3, $vb4);
+    $icon: _buildIcon(
+        map-get($icons, $icon-name),
+        $width,
+        $height,
+        $vb1,
+        $vb2,
+        $vb3,
+        $vb4
+    );
     @return url("data:image/svg+xml;utf8,#{$icon}");
 }
 
@@ -68,18 +80,35 @@
     background-image: icon(
         search,
         str-replace(#{$disabled}, "#", "%23"),
+        25,
+        25,
         0,
         0,
         24,
         24
     );
+    cursor: pointer;
+
+    &:hover {
+        background-image: icon(
+            search,
+            rgba(0, 0, 0, 0.712),
+            25,
+            25,
+            0,
+            0,
+            25,
+            25
+        );
+        border-radius: 5px;
+    }
 }
 
 .icon-exit {
     width: 24px;
     height: 24px;
     background-size: 24px 24px;
-    background-image: icon(exit, rgb(0, 0, 0), 0, 0, 24, 24);
+    background-image: icon(exit, rgb(0, 0, 0), 24, 24, 0, 0, 24, 24);
     cursor: pointer;
 }
 
@@ -87,5 +116,22 @@
     width: 24px;
     height: 24px;
     background-size: 24px 24px;
-    background-image: icon(expand, rgb(0, 0, 0), 0, 0, 24, 24);
+    background-image: icon(expand, rgb(0, 0, 0), 24px, 24px, 0, 0, 24, 24);
+}
+
+.icon-edit {
+    width: 16px;
+    height: 16px;
+    background-size: 100% 100%;
+    background-image: icon(
+        edit,
+        str-replace(#{$disabled}, "#", "%23"),
+        24px,
+        24px,
+        0,
+        0,
+        24,
+        24
+    );
+    cursor: pointer;
 }

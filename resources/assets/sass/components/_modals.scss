@@ -1,0 +1,224 @@
+.container-modal {
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+
+    overflow-y: visible;
+
+    display: none;
+    justify-items: center;
+
+    .modal-body {
+        width: 70%;
+        background-color: white;
+        border-radius: 30px;
+
+        @extend .grid-default;
+        grid-template-rows: 0.09fr 1fr;
+
+        .modal-header {
+            width: 100%;
+            padding-top: 20px;
+
+            display: grid;
+            justify-items: end;
+
+            .icon-exit {
+                margin-right: 7%;
+            }
+        }
+
+        .modal-content {
+            width: 100%;
+            overflow-x: hidden;
+            @extend .grid-default;
+            grid-template-rows: 0.1fr 1fr;
+
+            .container-steps {
+                @extend .grid-default;
+                align-items: center;
+                grid-template-columns: 0.5fr 25px 0.5fr 25px 0.5fr;
+
+                .circle-1,
+                .circle-2,
+                .circle-3 {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background-color: $secondary;
+                    color: white;
+                    font-weight: 700;
+                    z-index: 1;
+
+                    @extend .grid-default;
+                    align-items: center;
+                }
+
+                .circle-divider {
+                    width: 30px;
+                    border: 1px dashed rgb(189, 189, 189);
+                }
+            }
+
+            form {
+                width: 300%;
+                padding: 20px 0px 20px 0px;
+
+                display: grid;
+                justify-items: center;
+                //grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                grid-template-columns: 1fr 1fr 1fr;
+                row-gap: 5px;
+
+                .container-container {
+                    width: 100%;
+                    position: relative;
+                    left: 100%;
+
+                    @extend .grid-default;
+                    grid-template-columns: 1fr 1fr;
+                    align-items: center;
+                    row-gap: 20px;
+
+                    @media only screen and (max-width: $mobile-wide) {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .container-input {
+                        display: grid;
+                        row-gap: 20px;
+                        width: 75%;
+
+                        .validation {
+                            width: 100%;
+                            @extend .grid-default;
+                            grid-template-columns: 1fr 1fr 1fr;
+
+                            div {
+                                text-align: center;
+                            }
+                        }
+
+                        .btn-book-now {
+                            border: none;
+                            background-color: $primary;
+                            color: white;
+                            font-size: 1.5rem;
+                        }
+
+                        label {
+                            margin-left: 4%;
+                            font-size: 0.8rem;
+                            justify-self: start;
+                        }
+
+                        .input {
+                            margin-top: 10px;
+                            width: 89.5%;
+                            height: 30px;
+
+                            &::placeholder {
+                                color: $disabled;
+                            }
+                        }
+
+                        .input-2 {
+                            width: 95.1%;
+                            display: grid;
+                            grid-template-columns: 70% 30%;
+
+                            .label-dropdown {
+                                margin-left: 5.5%;
+                            }
+
+                            .input {
+                                width: 80%;
+                            }
+                        }
+
+                        .card-info {
+                            grid-template-columns: 50% 50%;
+                            column-gap: 10px;
+
+                            .input {
+                                width: 85%;
+                            }
+                        }
+
+                        .container-date-DB,
+                        .container-date-PI {
+                            display: grid;
+                            grid-template-columns: 0.19fr 0.5fr 0.21fr;
+                            width: 100%;
+                            align-items: center;
+                            column-gap: 20px;
+
+                            .input-day-DB,
+                            .input-day-PI {
+                                border-top-right-radius: 0px;
+                                border-bottom-right-radius: 0px;
+                            }
+
+                            .input-month-DB,
+                            .input-month-PI {
+                                border-radius: 0px;
+                                clip-path: inset(-5px 0 -5px 0);
+                                width: 100%;
+                                height: 32px;
+                            }
+
+                            .input-year-DB,
+                            .input-year-PI {
+                                border-top-left-radius: 0px;
+                                border-bottom-left-radius: 0px;
+                            }
+                        }
+                    }
+
+                    .cards {
+                        width: fit-content;
+
+                        a {
+                            cursor: pointer;
+                            width: fit-content;
+                            height: fit-content;
+
+                            &:focus-visible {
+                                ~ img {
+                                    outline: 2px solid $primary;
+                                    height: 100px;
+                                }
+                            }
+                            img {
+                                height: 55px;
+                                border-radius: 10px;
+                                box-shadow: 0 0px 14px rgba(0, 0, 0, 0.2);
+                            }
+                        }
+                    }
+                }
+
+                .container-container:first-child {
+                    .container-input {
+                        grid-column: span 2;
+                    }
+                }
+            }
+
+            .container-btn {
+                width: 100%;
+
+                @extend .grid-default;
+                grid-template-columns: 1fr 1fr;
+                justify-content: space-between;
+
+                .btn-next,
+                .btn-back {
+                    border: none;
+                    background-color: $secondary;
+                    color: white;
+                }
+            }
+        }
+    }
+}

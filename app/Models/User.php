@@ -42,6 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Get tickets of user
+     * 
+     * @return FlightTicket
+     */
     public function flights()
     {
         return $this->hasMany(FlightTicket::class);
