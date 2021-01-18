@@ -221,7 +221,7 @@ if (pathname === "/store") {
     }).get();
 
     for (var i in allStorePlaces) {
-      var origin = allStorePlaces[i].firstElementChild.firstElementChild.firstElementChild.innerHTML.toLowerCase().includes($("#input-search").val());
+      var origin = allStorePlaces[i].firstElementChild.firstElementChild.firstElementChild.innerHTML.toLowerCase().includes($("#input-search").val().toLowerCase());
       var destination = allStorePlaces[i].firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerHTML.toLowerCase().includes($("#input-search").val().toLowerCase());
 
       if (origin != "" || destination != "") {
@@ -274,7 +274,8 @@ if (pathname === "/store") {
 
       $(".container-bg").fadeOut(220);
       $(".container-modal").fadeOut(220);
-    });
+    }); // SHOW MODAL
+
     $(".open-modal-book").on("click", function () {
       var height = $(window).height();
       var id = $(this).data("id"); // Get id from button
