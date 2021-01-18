@@ -183,6 +183,9 @@ class AuthController extends Controller
     
     public function storeProfile(Request $request)
     {
+        $user = User::find(Auth::user()->id);
+        $flight_tickets = $user->flights()->with(['user'])->paginate(0);
+        
         $rules = [
             'name' => 'required',
             'gender' => 'required',
@@ -216,6 +219,7 @@ class AuthController extends Controller
             'age' => $user->user_details['age'],
             'date_of_birth' => $user->user_details['date_of_birth'],
             'birthplace' => $user->user_details['birthplace'],
+            'tickets' => $flight_tickets
         ]);
     }
 
