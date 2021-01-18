@@ -1,5 +1,4 @@
 .grid-default,
-.main-body,
 footer,
 .container-profile .profile-body .profile-details,
 .container-profile .profile-body,
@@ -19,11 +18,7 @@ footer,
 .container-modal .modal-body .modal-content .container-steps,
 .container-modal .modal-body .modal-content,
 .container-modal .modal-body,
-.container-signup .sign-block-2 form,
-.container-signup .sign-block-2,
-.container-sign .sign-block-1 form,
-.container-sign,
-.container-signup {
+.container-sign .sign-block-1 form {
   display: grid;
   justify-items: center;
 }
@@ -367,7 +362,8 @@ nav .icon-menu .line {
   border-radius: 50px;
   border: none;
   box-shadow: 0 0px 1.9px rgba(0, 0, 0, 0.085), 0 0px 15px rgba(0, 0, 0, 0.17);
-  align-items: center;
+  display: grid;
+  place-items: center;
   grid-template-columns: 1fr 1fr;
 }
 
@@ -380,8 +376,9 @@ nav .icon-menu .line {
 
 .container-sign .sign-block-1 {
   height: 100%;
+  width: 100%;
   display: grid;
-  align-content: center;
+  place-items: center;
 }
 
 @media only screen and (max-width: 559px) {
@@ -394,11 +391,8 @@ nav .icon-menu .line {
   margin-bottom: 40px;
 }
 
-.container-sign .sign-block-1 form input {
-  font-family: "Montserrat", sans-serif;
-}
-
-.container-sign .sign-block-1 form p {
+.container-sign .sign-block-1 form div {
+  margin-top: 25px;
   width: 100%;
 }
 
@@ -423,6 +417,7 @@ nav .icon-menu .line {
 .container-sign .sign-block-1 form #forgot-pass {
   font-size: 0.8rem;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .container-sign .sign-block-1 form #forgot-pass > a {
@@ -480,7 +475,7 @@ nav .icon-menu .line {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin-top: 2%;
+  margin-top: 8%;
 }
 
 .container-signup .sign-block-1 {
@@ -522,7 +517,7 @@ nav .icon-menu .line {
 .container-signup .sign-block-2 {
   height: 100%;
   padding: 20px 0px 20px 0px;
-  align-content: center;
+  width: 100%;
 }
 
 .container-signup .sign-block-2 #logo {
@@ -536,34 +531,35 @@ nav .icon-menu .line {
   }
 }
 
+.container-signup .sign-block-2 form {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+}
+
 .container-signup .sign-block-2 form label {
-  margin-top: 30px;
+  margin-top: 20px;
+  display: inline-block;
   padding-left: 17px;
   color: gray;
   font-size: 0.8rem;
 }
 
-.container-signup .sign-block-2 form p {
+.container-signup .sign-block-2 form div {
+  margin-top: 10px;
   width: 100%;
 }
 
-.container-signup .sign-block-2 form input {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
+.container-signup .sign-block-2 form div input {
+  width: 250px;
 }
 
-.container-signup .sign-block-2 form #username {
-  margin-top: 10px;
-  height: 30px;
-  width: 85%;
-}
-
+.container-signup .sign-block-2 form #username,
 .container-signup .sign-block-2 form #email,
 .container-signup .sign-block-2 form #password,
 .container-signup .sign-block-2 form #password_confirmation {
-  margin-top: 10px;
   height: 30px;
-  width: 85%;
 }
 
 .container-signup .sign-block-2 form .btn-form-signup {
@@ -1363,6 +1359,8 @@ body {
 .main-body {
   height: 100%;
   width: 100%;
+  display: grid;
+  place-items: center;
 }
 
 .container-bg {

@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport", content="width=device-width, initial-scale=1.0">
   <title>Agila - Login</title>
 
-  <link rel="stylesheet" type="text/css" href="../css/app.css" />
+  <link rel="stylesheet" type="text/css" href="css/app.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
@@ -22,15 +22,15 @@
               <a href="{{ route('home') }}" id="logo"><img src="{{ asset('img/Vertical.svg') }}" alt="Agila logo" /></a> 
 
               <section>
-                <p>
+                <div>
                   <label for="email">Email</label>
                   <input type="email" name="email" id="email" class="input @if(session('status')) border-red @endif" value="{{ old('email') }}" />  
-                </p>
+                </div>
 
-                <p>
+                <div>
                   <label for="password">Password</label>
                   <input type="password" name="password" id="password" class="input @if(session('status')) border-red @endif" />    
-                </p>
+                </div>
 
                 @if (session('status'))
                   <div class="text-alert" style="display: grid; place-items: center;">
@@ -38,9 +38,9 @@
                   </div>
                 @endif
                 
-                <p id="forgot-pass">
+                <div id="forgot-pass">
                   <a href="{{ route('reset') }}">Forgot your password?</a>
-                </p>
+                </div>
               </section>
 
               <section>
