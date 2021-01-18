@@ -8,7 +8,7 @@
   <title>Agila @yield('pageTitle')</title>
   <link rel="icon" href="{{ asset('img/Symbol.svg') }}"/>
 
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" type="text/css" href="{{ url('/css/app.css') }}" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
@@ -102,7 +102,7 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
-    <script src="/js/app.js"></script>
+    <script type="text/javascript" src="{{ url('js/app.js') }}"></script>
   </body>
 
 </html>
