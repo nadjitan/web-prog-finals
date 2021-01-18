@@ -35,7 +35,11 @@ if (pathname === "/store") {
                 i
             ].firstElementChild.firstElementChild.firstElementChild.innerHTML
                 .toLowerCase()
-                .includes($("#input-search").val());
+                .includes(
+                    $("#input-search")
+                        .val()
+                        .toLowerCase()
+                );
             let destination = allStorePlaces[
                 i
             ].firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerHTML
@@ -95,6 +99,7 @@ if (pathname === "/store") {
             $(".container-modal").fadeOut(220);
         });
 
+        // SHOW MODAL
         $(".open-modal-book").on("click", function() {
             const height = $(window).height();
             let id = $(this).data("id"); // Get id from button

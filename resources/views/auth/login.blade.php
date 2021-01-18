@@ -34,7 +34,7 @@
                 </p>
 
                 @if (session('status'))
-                  <div class="text-alert" style="padding-top: 15px">
+                  <div class="text-alert" style="display: grid; place-items: center;">
                       {{ session('status') }}
                   </div>
                 @endif
