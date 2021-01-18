@@ -7,7 +7,7 @@
   <title>Agila - Signup</title>
 
   <link rel="icon" href="{{ asset('img/Symbol.svg') }}"/>
-  <link rel="stylesheet" type="text/css" href="css/app.css" />
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
