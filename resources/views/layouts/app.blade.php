@@ -24,7 +24,7 @@
       </a>
 
       <div class="nav-links">
-        <a href="{{ route('home') }}" class="link-enabled">Home</a>
+        <a href="{{ route('home') }}" class="link-disabled">Home</a>
         <a href="{{ route('about-us') }}" class="link-disabled">About</a>
         <a href="{{ route('contact-us') }}" class="link-disabled">Contact Us</a>
 
