@@ -324,9 +324,10 @@ nav .icon-menu .line {
   nav .nav-links {
     display: grid;
     grid-template-rows: repeat(auto-fill, 1fr);
-    justify-items: center;
+    place-items: center;
+    text-align: center;
     touch-action: none;
-    background-color: rgba(0, 0, 0, 0.534);
+    background-color: rgba(0, 0, 0, 0.781);
     position: fixed;
     z-index: 9;
     top: 12%;
@@ -339,8 +340,14 @@ nav .icon-menu .line {
   nav .nav-links a:not(.btn) {
     color: white;
     font-size: 3rem;
-    width: 100%;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
     margin: 0;
+  }
+
+  nav .nav-links a:not(.btn)::after {
+    border-bottom: solid 3px white;
   }
 
   nav .nav-links .btn-login,
@@ -1335,6 +1342,12 @@ label[for=expyear-toggle] .dropdown {
   grid-template-columns: 1fr 1fr;
   gap: 140px;
   padding-bottom: 80px;
+}
+
+@media only screen and (max-width: 559px) {
+  .contact-us .container-contact-us {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contact-us .container-contact-us .cu-form {

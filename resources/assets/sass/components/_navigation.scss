@@ -68,23 +68,28 @@ nav {
         .nav-links {
             display: grid;
             grid-template-rows: repeat(auto-fill, 1fr);
-            justify-items: center;
+            place-items: center;
+            text-align: center;
             touch-action: none;
 
-            background-color: rgba(0, 0, 0, 0.534);
+            background-color: rgba(0, 0, 0, 0.781);
             position: fixed;
             z-index: 9;
             top: 12%;
             left: 0;
             right: 0;
             height: 0%;
-            overflow: hidden; 
+            overflow: hidden;
 
             a:not(.btn) {
                 color: $light;
                 font-size: 3rem;
-                width: 100%;
+                width: fit-content;
                 margin: 0;
+
+                &::after {
+                    border-bottom: solid 3px white;
+                }
             }
 
             .btn-login,
