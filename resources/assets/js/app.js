@@ -51,6 +51,36 @@ function pageFullyLoaded(e) {
         $(".btn-details").css({ "z-index": 0, color: "gray" });
         $(".btn-purchases").css({ "z-index": 2, color: "black" });
     });
+
+    $(".btn-about-agila").click(() => {
+        $(".btn-about-agila").css({
+            color: "white",
+            "border-bottom": "3px solid white"
+        });
+
+        $(".btn-about-the-creators").css({
+            color: "rgba(255, 255, 255, 0.452)",
+            "border-bottom": "none"
+        });
+
+        $(".au-paragraph").css({ display: "grid" });
+        $(".au-creators").css({ display: "none" });
+    });
+
+    $(".btn-about-the-creators").click(() => {
+        $(".btn-about-agila").css({
+            color: "rgba(255, 255, 255, 0.452)",
+            "border-bottom": "none"
+        });
+
+        $(".btn-about-the-creators").css({
+            color: "white",
+            "border-bottom": "3px solid white"
+        });
+
+        $(".au-paragraph").css({ display: "none" });
+        $(".au-creators").css({ display: "grid" });
+    });
 }
 
 /**

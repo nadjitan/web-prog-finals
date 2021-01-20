@@ -19,6 +19,14 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/about-us', function () {
+    return view('about_us');
+})->name('about-us');
+
+Route::get('/contact-us', function () {
+    return view('contact_us');
+})->name('contact-us');
+
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware(['guest']);
 Route::post('/login', [AuthController::class, 'storeLogin']);
 

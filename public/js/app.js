@@ -145,6 +145,38 @@ function pageFullyLoaded(e) {
       color: "black"
     });
   });
+  $(".btn-about-agila").click(function () {
+    $(".btn-about-agila").css({
+      color: "white",
+      "border-bottom": "3px solid white"
+    });
+    $(".btn-about-the-creators").css({
+      color: "rgba(255, 255, 255, 0.452)",
+      "border-bottom": "none"
+    });
+    $(".au-paragraph").css({
+      display: "grid"
+    });
+    $(".au-creators").css({
+      display: "none"
+    });
+  });
+  $(".btn-about-the-creators").click(function () {
+    $(".btn-about-agila").css({
+      color: "rgba(255, 255, 255, 0.452)",
+      "border-bottom": "none"
+    });
+    $(".btn-about-the-creators").css({
+      color: "white",
+      "border-bottom": "3px solid white"
+    });
+    $(".au-paragraph").css({
+      display: "none"
+    });
+    $(".au-creators").css({
+      display: "grid"
+    });
+  });
 }
 /**
  * Function for edit button in profile page

@@ -25,7 +25,8 @@
 
       <div class="nav-links">
         <a href="{{ route('home') }}" class="link-enabled">Home</a>
-        <a href="#ABOUT" class="link-disabled">About</a>
+        <a href="{{ route('about-us') }}" class="link-disabled">About</a>
+        <a href="{{ route('contact-us') }}" class="link-disabled">Contact Us</a>
 
         @guest
           <a href="{{ route('signup') }}" class="btn btn-signup">
